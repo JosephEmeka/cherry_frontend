@@ -1,0 +1,12 @@
+version: '3'
+services:
+  frontend:
+    build: .
+    image: cherryfrontend
+    ports:
+      - "3000:3000"
+    networks:
+      - frontend-network
+networks:
+  frontend-network:
+    driver: bridge
