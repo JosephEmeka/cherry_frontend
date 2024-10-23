@@ -19,25 +19,25 @@ const Sidebar = () => (
                 <div className="ml-4">
 
                     <li className="mr-6 mt-10 mb-10 hover:bg-custom-cherry h-[48px] w-[180px] rounded-lg">
-                        <a href="#" className="flex items-center text-custom-cherry hover:text-white text-[16px]">
+                        <button  className="flex items-center text-custom-cherry hover:text-white text-[16px]">
                             <Layout className="mr-3 ml-3 mt-3"/> <h3 className="mt-3">Dashboard</h3>
-                        </a>
+                        </button>
                     </li>
 
                 </div>
                 <div className="ml-4">
                     <li className="mr-6 mt-10 mb-10 hover:bg-custom-cherry h-[48px] w-[180px] rounded-lg">
-                        <a href="#" className="flex items-center text-custom-cherry hover:text-white text-[16px]">
+                        <button className="flex items-center text-custom-cherry hover:text-white text-[16px]">
                             <Calendar className="mr-3 ml-3 mt-3"/> <h3 className="mt-3"> Appointments</h3>
-                        </a>
+                        </button>
                     </li>
                 </div>
 
                 <div className="ml-4">
                     <li className="mr-6 mt-10 mb-10 hover:bg-custom-cherry h-[48px] w-[180px] rounded-lg">
-                        <a href="#" className="flex items-center text-custom-cherry hover:text-white text-[16px]">
+                        <button className="flex items-center text-custom-cherry hover:text-white text-[16px]">
                             <Heart className="mr-3 ml-3 mt-3"/> <h3 className="mt-3">Elderly Care</h3>
-                        </a>
+                        </button>
                     </li>
                 </div>
 
@@ -50,19 +50,19 @@ const Sidebar = () => (
                         <ul>
                             <div className="ml-4">
                                 <li className="mr-6 mt-10 mb-10 hover:bg-custom-cherry h-[48px] w-[180px] rounded-lg">
-                                    <a href="#"
+                                    <button
                                        className="flex items-center text-custom-cherry hover:text-white text-[16px]">
                                         <User className="mr-3 ml-3 mt-3"/> <h3 className="mt-3"> Profile Settings</h3>
-                                    </a>
+                                    </button>
                                 </li>
                             </div>
 
                             <div className="ml-4">
                                 <li className="mr-6 mt-10 mb-10 hover:bg-custom-cherry h-[48px] w-[180px] rounded-lg">
-                                    <a href="#"
+                                    <button
                                        className="flex items-center text-custom-cherry hover:text-white text-[16px]">
                                         <Settings className="mr-3 ml-3 mt-3"/> <h3 className="mt-3"> Wallet</h3>
-                                    </a>
+                                    </button>
                                 </li>
                             </div>
 

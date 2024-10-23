@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-
 const months = [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'
@@ -10,31 +9,26 @@ const months = [
 const UpcomingSchedules = () => {
     const [schedules, setSchedules] = useState([]);
     const [currentMonth, setCurrentMonth] = useState(new Date().getMonth()); // 0 - January, 11 - December
-    const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
-
+    const [currentYear, ] = useState(new Date().getFullYear());
 
     const getDaysInMonth = (month, year) => new Date(year, month + 1, 0).getDate();
 
-
     const getFirstDayOfMonth = (month, year) => new Date(year, month, 1).getDay();
 
+    // Fetching schedules from the backend
     useEffect(() => {
-
         axios.get('/api/upcoming-schedules')
-            .then(response => setSchedules(response.data))
+            .then(response => setSchedules(response.data))  // Assuming response.data contains an array of schedule dates in YYYY-MM-DD format
             .catch(error => console.error(error));
     }, []);
-
 
     const handleMonthChange = (event) => {
         setCurrentMonth(parseInt(event.target.value));
     };
 
-
     const generateCalendar = () => {
         const daysInMonth = getDaysInMonth(currentMonth, currentYear);
         const firstDay = getFirstDayOfMonth(currentMonth, currentYear);
-
 
         const calendarDays = [];
         let currentDay = 1;
@@ -43,9 +37,9 @@ const UpcomingSchedules = () => {
             const week = [];
             for (let j = 0; j < 7; j++) {
                 if (i === 0 && j < firstDay) {
-                    week.push('');
+                    week.push(''); // Empty cells for days before the first day of the month
                 } else if (currentDay > daysInMonth) {
-                    week.push('');
+                    week.push(''); // Empty cells after the last day of the month
                 } else {
                     week.push(currentDay);
                     currentDay++;
@@ -59,13 +53,18 @@ const UpcomingSchedules = () => {
 
     const calendar = generateCalendar();
 
+    // Helper function to check if a day has a scheduled event
+    const isScheduledDay = (day) => {
+        const dayString = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        return schedules.some(schedule => schedule.date === dayString); // Assuming schedules is an array of objects like { date: 'YYYY-MM-DD' }
+    };
+
     return (
         <div className="bg-white p-6 rounded-lg relative">
             <div className="flex justify-between items-center">
                 <h3 className="text-xl font-semibold mb-4">Upcoming Schedules</h3>
 
                 <div className="flex items-center mr-10">
-
                     <select
                         value={currentMonth}
                         onChange={handleMonthChange}
@@ -77,7 +76,6 @@ const UpcomingSchedules = () => {
                             </option>
                         ))}
                     </select>
-
 
                     <span className="text-lg font-semibold text-gray-700">{currentYear}</span>
                 </div>
@@ -99,7 +97,10 @@ const UpcomingSchedules = () => {
                 {calendar.map((week, index) => (
                     <tr className="text-center" key={index}>
                         {week.map((day, i) => (
-                            <td className="py-2" key={i}>
+                            <td
+                                key={i}
+                                className={`py-2 ${day && isScheduledDay(day) ? 'bg-blue-100 text-blue-600 font-bold rounded-full' : ''}`}
+                            >
                                 {day || ''}
                             </td>
                         ))}
