@@ -1,0 +1,32 @@
+# This is the Render YAML configuration for your Node.js frontend project.
+# It defines how the service should be deployed and managed on Render.
+
+services:
+  - type: web                      # Defines the service type as a web service
+    name: cherryfrontend            # The service name in Render
+    # Node.js environment
+
+    branch: main                    # Specifies the branch to auto-deploy
+    autoDeploy: true                # Automatically deploy when new commits are pushed to 'main'
+
+    # Build and start commands
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+
+    plan: free                      # Specifies the free plan; change based on your usage
+    healthCheckPath: /              # Health check endpoint
+
+    pullRequestPreviewsEnabled: true  # Enables PR previews for other branches
+
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: REACT_APP_API_URL
+        value: https://api.cherryfrontend.com
+
+
+    runtime: node
+    region: oregon
+
+
+
