@@ -1,0 +1,40 @@
+name: Build and Deploy Front-End
+
+on:
+  push:
+    branches:
+      - in-dev
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build project
+      run: npm run build
+
+    - name: Docker build
+      run: |
+        docker build -t cherryfrontend .
+
+    - name: Push Docker images to Docker Hub
+      run: |
+        echo "1111Joeking92$%" | docker login -u "josephemekaonah" --password-stdin
+        docker tag cherryfrontend:latest josephemekaonah/cherryfrontend:latest
+        docker push josephemekaonah/cherryfrontend:latest
+
+    - name: Deploy to server
+      run: |
+        ssh user@your-server "docker pull josephemekaonah/cherryfrontend:latest && docker-compose up -d"
