@@ -1,7 +1,7 @@
-import Home from "../pages/Home";
+import Dashboard from "../pages/Dashboard";
 export const ROUTE =[
     {
         path: "/",
-        element: <Home/>,
+        element: <Dashboard/>,
     }
 ]

@@ -6,7 +6,7 @@ import MedicalHistory from "../components/medical_history/MedicalHistory";
 import UpcomingSchedules from "../components/medical_history/UpcomingSchedules";
 import WelcomeSection from "../components/WelcomeSection";
 
-const Home = () => {
+const Dashboard = () => {
     return (
         <div>
         <div className="flex">
@@ -27,4 +27,4 @@ const Home = () => {
 );
 };
 
-export default Home
+export default Dashboard

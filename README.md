@@ -24,7 +24,7 @@ The Cherry Clinic App seamlessly automates patient-doctor assignments based on a
 3. **Doctor Assignment & Appointment Booking**
    - **Automated Doctor Assignment** based on patient needs, doctor's specialization, and availability.
    - **Appointment Options**:
-     - Home-Based Care: A doctor visits the patient at home.
+     - Dashboard-Based Care: A doctor visits the patient at home.
      - Outpatient Clinic: Patient visits the clinic.
    - **Scheduling**: Automatic, real-time appointment booking with reminders via push notifications, SMS, or email.
 

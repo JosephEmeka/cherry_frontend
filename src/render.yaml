@@ -12,7 +12,7 @@ services:
 
     # Ensure Render publishes the 'build' directory
     publish:
-      path: ./build                 # Correct publish directory after running 'npm run build'
+      path: ./build
 
     plan: free                      # Specifies the free plan; adjust as needed
     healthCheckPath: /              # Health check endpoint
