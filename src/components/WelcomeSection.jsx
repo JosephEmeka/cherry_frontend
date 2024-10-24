@@ -40,7 +40,7 @@ const WelcomeSection = () => {
                         Create An Appointment
                     </button>
                 </div>
-                <div className="pr-28 pb-0">
+                <div className="pr-28 pb-28">
                     <img src={doc_pic} alt="Doctor" className="w-[224px] h-[336px]" />
                 </div>
             </div>
