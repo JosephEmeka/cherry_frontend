@@ -9,18 +9,17 @@ const months = [
 const UpcomingSchedules = () => {
     const [schedules, setSchedules] = useState([]);
     const [currentMonth, setCurrentMonth] = useState(new Date().getMonth()); // 0 - January, 11 - December
-    const [currentYear, ] = useState(new Date().getFullYear());
+    const [currentYear] = useState(new Date().getFullYear());
 
     const getDaysInMonth = (month, year) => new Date(year, month + 1, 0).getDate();
 
     const getFirstDayOfMonth = (month, year) => new Date(year, month, 1).getDay();
 
-    // Fetching schedules from the backend
     useEffect(() => {
-        axios.get('/api/upcoming-schedules')
-            .then(response => setSchedules(response.data))  // Assuming response.data contains an array of schedule dates in YYYY-MM-DD format
-            .catch(error => console.error(error));
-    }, []);
+        axios.get(`/api/upcoming-schedules?month=${currentMonth + 1}&year=${currentYear}`)
+            .then(response => setSchedules(response.data))
+            .catch(error => console.error('Error fetching schedules:', error));
+    }, [currentMonth, currentYear]);
 
     const handleMonthChange = (event) => {
         setCurrentMonth(parseInt(event.target.value));
@@ -37,9 +36,9 @@ const UpcomingSchedules = () => {
             const week = [];
             for (let j = 0; j < 7; j++) {
                 if (i === 0 && j < firstDay) {
-                    week.push(''); // Empty cells for days before the first day of the month
+                    week.push('');
                 } else if (currentDay > daysInMonth) {
-                    week.push(''); // Empty cells after the last day of the month
+                    week.push('');
                 } else {
                     week.push(currentDay);
                     currentDay++;
@@ -53,10 +52,9 @@ const UpcomingSchedules = () => {
 
     const calendar = generateCalendar();
 
-    // Helper function to check if a day has a scheduled event
     const isScheduledDay = (day) => {
         const dayString = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-        return schedules.some(schedule => schedule.date === dayString); // Assuming schedules is an array of objects like { date: 'YYYY-MM-DD' }
+        return schedules.some(schedule => schedule.date === dayString);
     };
 
     return (
@@ -68,7 +66,7 @@ const UpcomingSchedules = () => {
                     <select
                         value={currentMonth}
                         onChange={handleMonthChange}
-                        className="bg-gray-200 p-2 rounded-lg text-gray-700 mr-4"
+                        className="bg-gray-200 p-2 border-custom-cherry border-2 rounded-lg text-gray-700 mr-4"
                     >
                         {months.map((month, index) => (
                             <option key={index} value={index}>
@@ -82,8 +80,8 @@ const UpcomingSchedules = () => {
             </div>
 
             <table className="w-full mt-4">
-                <thead>
-                <tr className="text-center">
+                <thead className="bg-gray-100 h-10">
+                <tr className="text-center mb-72">
                     <th>Sun</th>
                     <th>Mon</th>
                     <th>Tue</th>
@@ -99,7 +97,12 @@ const UpcomingSchedules = () => {
                         {week.map((day, i) => (
                             <td
                                 key={i}
-                                className={`py-2 ${day && isScheduledDay(day) ? 'bg-blue-100 text-blue-600 font-bold rounded-full' : ''}`}
+                                className={`py-2 w-10 h-10 ${day
+                                    ? isScheduledDay(day)
+                                        ? 'bg-[#3c7a89] text-white font-bold rounded-full'
+                                        : 'hover:bg-gray-100 cursor-pointer rounded-full'
+                                    : ''
+                                }`}
                             >
                                 {day || ''}
                             </td>

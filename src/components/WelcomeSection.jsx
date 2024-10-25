@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import doc_pic from "../assets/DocPic.png";
+import VectorCircles from "./VectorCircles";
 
 const WelcomeSection = () => {
     const [userName, setUserName] = useState("");
@@ -27,10 +28,8 @@ const WelcomeSection = () => {
 
     return (
         <section className="mb-8">
-            <h1 className="text-[20px] text-[#98A1A8] font-bold mb-8">
-                Dashboard
-            </h1>
-            <div className="bg-custom-cherry text-white rounded-lg flex justify-between items-center shadow-md h-56">
+            <h1 className="text-[20px] text-[#98A1A8] font-bold mb-8">Dashboard</h1>
+            <div className="relative bg-custom-cherry text-white rounded-lg flex justify-between items-center shadow-md h-56">
                 <div className="p-6">
                     <h2 className="text-2xl font-semibold mb-2 mt-0">
                         {greeting}, {userName}
@@ -40,12 +39,16 @@ const WelcomeSection = () => {
                         Create An Appointment
                     </button>
                 </div>
+                <div>
+                    <VectorCircles/>
+                </div>
                 <div className="pr-28 pb-28">
                     <img src={doc_pic} alt="Doctor" className="w-[224px] h-[336px]" />
                 </div>
             </div>
         </section>
     );
+
 };
 
 export default WelcomeSection;

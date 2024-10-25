@@ -14,14 +14,14 @@ const MedicalHistory = () => {
         <div className="bg-white p-6 rounded-lg">
             <div className="flex justify-between items-center mb-4">
                 <h3 className="text-xl font-semibold">Medical History</h3>
-                <button className="border custom-border custom-color px-4 py-2 rounded-full">Show all</button>
+                <button className="border border-custom-cherry  rounded-lg custom-border custom-color px-4 py-2 ">Show all</button>
             </div>
             <table className="w-full">
                 <thead>
-                <tr className="text-left">
-                    <th className="pb-2">Doctor Name</th>
-                    <th className="pb-2">Diagnosis</th>
-                    <th className="pb-2">Date</th>
+                <tr className=" text-center bg-gray-100 h-10">
+                    <th className="w-1/3 text-left pl-4 pb-2">Doctor Name</th>
+                    <th className=" w-1/3 pb-2">Diagnosis</th>
+                    <th className=" w-1/3 text-right pr-8 pb-2">Date</th>
                 </tr>
                 </thead>
                 <tbody>

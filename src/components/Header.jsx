@@ -16,8 +16,8 @@ const Header = () => (
                 />
             </div>
 
-            <div className="flex items-center">
-                <img src="https://placehold.co/40x40" alt="Profile" className="rounded-full mr-2"/>
+            <div className="flex items-center mr-10">
+                <img src="https://placehold.co/40x40" alt="Profile" className="rounded-full mr-4"/>
                 <div>
                     <p className="font-semibold">Adeyemi Cherry</p>
                     <p className="text-gray-600">Profile</p>

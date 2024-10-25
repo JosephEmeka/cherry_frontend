@@ -1,7 +1,7 @@
 import React from 'react';
-import { Layout, Calendar, Heart, User, Settings, Menu } from 'react-feather';
+import { Layout, Calendar, Heart, User, Menu } from 'react-feather';
 import Logo from "../assets/cherryLogo.png"
-
+import {  Wallet } from 'lucide-react';
 const Sidebar = () => (
     <aside className="mt-8 w-64 bg-white pl-6 pt-6 pb-4 shadow-md h-screen">
 
@@ -61,7 +61,7 @@ const Sidebar = () => (
                                 <li className="mr-6 mt-10 mb-10 hover:bg-custom-cherry h-[48px] w-[180px] rounded-lg">
                                     <button
                                        className="flex items-center text-custom-cherry hover:text-white text-[16px]">
-                                        <Settings className="mr-3 ml-3 mt-3"/> <h3 className="mt-3"> Wallet</h3>
+                                        <Wallet className="mr-3 ml-3 mt-3"/> <h3 className="mt-3"> Wallet</h3>
                                     </button>
                                 </li>
                             </div>
