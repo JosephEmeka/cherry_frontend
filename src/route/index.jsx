@@ -1,7 +1,15 @@
 import Dashboard from "../pages/Dashboard";
+import CancelAppointment from "../pages/appointments/CancelAppointment";
 export const ROUTE =[
     {
-        path: "/",
+        path: "/dashboard",
         element: <Dashboard/>,
+
+    },
+
+    {
+        path: "/cancelAppointment",
+        element: <CancelAppointment/>,
+
     }
 ]

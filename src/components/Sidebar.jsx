@@ -1,75 +1,69 @@
 import React from 'react';
 import { Layout, Calendar, Heart, User, Menu } from 'react-feather';
-import Logo from "../assets/cherryLogo.png"
-import {  Wallet } from 'lucide-react';
-const Sidebar = () => (
-    <aside className="mt-8 w-64 bg-white pl-6 pt-6 pb-4 shadow-md h-screen">
+import { Wallet } from 'lucide-react';
+import Logo from "../assets/cherryLogo.png";
 
-        <div className=" mb-8 rounded-lg flex justify-between items-center">
-            <img src={Logo} alt="Logo" className="mr-3"/>
-            <div className="pl-14 pr-3">
-                <Menu />
+const Sidebar = () => (
+    <aside className="w-64 bg-white shadow-lg h-screen p-6 flex flex-col justify-between">
+
+        
+        <div>
+            <div className="flex justify-between items-center mb-8">
+                <img src={Logo} alt="Logo" className="h-10 w-auto" />
+                <Menu className="text-gray-500 cursor-pointer" />
+            </div>
+
+
+            <div className="mb-8">
+                <h3 className="text-gray-600 font-semibold text-lg mb-4">Main Menu</h3>
+                <ul className="space-y-4">
+                    <li>
+                        <button className="flex items-center text-custom-cherry hover:bg-custom-cherry hover:text-white transition-all duration-300 rounded-lg w-full p-3">
+                            <Layout className="mr-3" />
+                            <span className="text-[16px]">Dashboard</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button className="flex items-center text-custom-cherry hover:bg-custom-cherry hover:text-white transition-all duration-300 rounded-lg w-full p-3">
+                            <Calendar className="mr-3" />
+                            <span className="text-[16px]">Appointments</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button className="flex items-center text-custom-cherry hover:bg-custom-cherry hover:text-white transition-all duration-300 rounded-lg w-full p-3">
+                            <Heart className="mr-3" />
+                            <span className="text-[16px]">Elderly Care</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div>
+                <h3 className="text-gray-600 font-semibold text-lg mb-4">Other Menu</h3>
+                <ul className="space-y-4">
+                    <li>
+                        <button className="flex items-center text-custom-cherry hover:bg-custom-cherry hover:text-white transition-all duration-300 rounded-lg w-full p-3">
+                            <User className="mr-3" />
+                            <span className="text-[16px]">Profile Settings</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button className="flex items-center text-custom-cherry hover:bg-custom-cherry hover:text-white transition-all duration-300 rounded-lg w-full p-3">
+                            <Wallet className="mr-3" />
+                            <span className="text-[16px]">Wallet</span>
+                        </button>
+                    </li>
+                </ul>
             </div>
         </div>
-        <nav>
-            <ul>
-                <div className="ml-4">
-                    <h3 className="text-gray-600 mb-4 mr-8 ml-3">Main Menu</h3>
-                </div>
-                <div className="ml-4">
-
-                    <li className="mr-6 mt-10 mb-10 hover:bg-custom-cherry h-[48px] w-[180px] rounded-lg">
-                        <button  className="flex items-center text-custom-cherry hover:text-white text-[16px]">
-                            <Layout className="mr-3 ml-3 mt-3"/> <h3 className="mt-3">Dashboard</h3>
-                        </button>
-                    </li>
-
-                </div>
-                <div className="ml-4">
-                    <li className="mr-6 mt-10 mb-10 hover:bg-custom-cherry h-[48px] w-[180px] rounded-lg">
-                        <button className="flex items-center text-custom-cherry hover:text-white text-[16px]">
-                            <Calendar className="mr-3 ml-3 mt-3"/> <h3 className="mt-3"> Appointments</h3>
-                        </button>
-                    </li>
-                </div>
-
-                <div className="ml-4">
-                    <li className="mr-6 mt-10 mb-10 hover:bg-custom-cherry h-[48px] w-[180px] rounded-lg">
-                        <button className="flex items-center text-custom-cherry hover:text-white text-[16px]">
-                            <Heart className="mr-3 ml-3 mt-3"/> <h3 className="mt-3">Elderly Care</h3>
-                        </button>
-                    </li>
-                </div>
 
 
-                <div className="mt-8">
-                    <div className="ml-4">
-                        <h3 className="text-gray-600 mb-4 mr-8 ml-3">Other Menu</h3>
-                    </div>
-
-                        <ul>
-                            <div className="ml-4">
-                                <li className="mr-6 mt-10 mb-10 hover:bg-custom-cherry h-[48px] w-[180px] rounded-lg">
-                                    <button
-                                       className="flex items-center text-custom-cherry hover:text-white text-[16px]">
-                                        <User className="mr-3 ml-3 mt-3"/> <h3 className="mt-3"> Profile Settings</h3>
-                                    </button>
-                                </li>
-                            </div>
-
-                            <div className="ml-4">
-                                <li className="mr-6 mt-10 mb-10 hover:bg-custom-cherry h-[48px] w-[180px] rounded-lg">
-                                    <button
-                                       className="flex items-center text-custom-cherry hover:text-white text-[16px]">
-                                        <Wallet className="mr-3 ml-3 mt-3"/> <h3 className="mt-3"> Wallet</h3>
-                                    </button>
-                                </li>
-                            </div>
-
-                        </ul>
-                    </div>
-            </ul>
-        </nav>
+        <div className="mt-8">
+            <p className="text-sm text-gray-500">
+                © 2024 YourCompany. All rights reserved.
+            </p>
+        </div>
     </aside>
 );
 
