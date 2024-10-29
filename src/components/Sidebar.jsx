@@ -6,7 +6,7 @@ import Logo from "../assets/cherryLogo.png";
 const Sidebar = () => (
     <aside className="w-64 bg-white shadow-lg h-screen p-6 flex flex-col justify-between">
 
-        
+
         <div>
             <div className="flex justify-between items-center mb-8">
                 <img src={Logo} alt="Logo" className="h-10 w-auto" />
@@ -61,7 +61,7 @@ const Sidebar = () => (
 
         <div className="mt-8">
             <p className="text-sm text-gray-500">
-                © 2024 YourCompany. All rights reserved.
+                © 2024 CherryMedicals. All rights reserved.
             </p>
         </div>
     </aside>

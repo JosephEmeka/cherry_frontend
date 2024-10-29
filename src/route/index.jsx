@@ -1,5 +1,5 @@
 import Dashboard from "../pages/Dashboard";
-import CancelAppointment from "../pages/appointments/CancelAppointment";
+import Appointment from "../pages/appointments/Appointment";
 export const ROUTE =[
     {
         path: "/dashboard",
@@ -8,8 +8,8 @@ export const ROUTE =[
     },
 
     {
-        path: "/cancelAppointment",
-        element: <CancelAppointment/>,
+        path: "/appointment",
+        element: <Appointment/>,
 
     }
 ]
