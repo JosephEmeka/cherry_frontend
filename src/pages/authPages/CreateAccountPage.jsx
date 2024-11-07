@@ -1,13 +1,13 @@
-import React, {useState} from "react";
+import React from "react";
 import logo from "../../assets/cherryLogo.png";
 
 const CreateAccountPage = () => {
 
-    const [form, setForm] = useState({
-        email: '',
-        password: '',
-
-    });
+    // const [form, setForm] = useState({
+    //     email: '',
+    //     password: '',
+    //
+    // });
     return (
         <div className="flex items-center justify-center h-screen bg-gray-100 overflow-hidden">
             <div
@@ -75,7 +75,7 @@ const CreateAccountPage = () => {
                     </div>
 
                     <p className="mt-3 text-center text-xs text-gray-500 leading-tight">
-                        By continuing, you agree to our <a href="#" className="text-custom-cherry hover:underline">Terms of Service</a> and <a href="#" className="text-custom-cherry hover:underline">Privacy Policy</a>.
+                        By continuing, you agree to our <a href="/terms" className="text-custom-cherry hover:underline">Terms of Service</a> and <a href="/privacy" className="text-custom-cherry hover:underline">Privacy Policy</a>.
                     </p>
 
                     <button type="submit" className="w-full py-2 mt-2 text-white bg-custom-cherry rounded-lg hover:bg-blue-700 text-xs">
