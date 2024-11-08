@@ -3,7 +3,7 @@ services:
     name: cherryfrontend            # The service name in Render
     env: node                       # Node.js environment
 
-    branch: main                    # Specifies the branch to auto-deploy
+    branch: in-dev                    # Specifies the branch to auto-deploy
     autoDeploy: true                # Automatically deploy when new commits are pushed to 'main'
 
     # Build and start commands
