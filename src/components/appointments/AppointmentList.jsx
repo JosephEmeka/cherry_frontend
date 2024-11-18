@@ -21,3 +21,6 @@ const AppointmentList = ({ appointments }) => {
 };
 
 export default AppointmentList;
+
+
+

@@ -14,7 +14,7 @@ export const UserProvider = ({ children }) => {
         setUser(null);
         localStorage.removeItem('token');
         toast.success("Logged out successfully.");
-        navigate('/login');
+        // navigate('/login');
     }, [navigate]);
 
     useEffect(() => {

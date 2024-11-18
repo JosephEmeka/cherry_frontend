@@ -16,11 +16,17 @@ const LoginPage = () => {
             });
 
             if (response.status === 200) {
+                const { token, user } = response.data; // Assuming response contains a token and user data
+
+                // Save token and user data to localStorage
+                localStorage.setItem("token", token);
+                localStorage.setItem("user", JSON.stringify(user));
 
                 console.log("Login successful:", response.data);
+                // Optionally redirect the user after login
+                window.location.href = "/dashboard"; // Update to your dashboard route
             }
         } catch (error) {
-
             console.error("Login error:", error);
         }
     };
@@ -99,6 +105,6 @@ const LoginPage = () => {
             </div>
         </div>
     );
-}
+};
 
 export default LoginPage;
