@@ -8,14 +8,15 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const logout = useCallback(() => {
         setUser(null);
         localStorage.removeItem('token');
         toast.success("Logged out successfully.");
         // navigate('/login');
-    }, [navigate]);
+    },
+        );
 
     useEffect(() => {
         const fetchUserData = async () => {
