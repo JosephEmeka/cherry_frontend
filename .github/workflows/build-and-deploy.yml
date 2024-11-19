@@ -1,15 +1,12 @@
 name: Build and Deploy Front-End
-
 on:
   push:
     branches:
       - in-dev
       - main
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -30,10 +27,14 @@ jobs:
           docker build -t cherryfrontend .
 
       - name: Push Docker images to Docker Hub
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
-          echo "1111Joeking92$%" | docker login -u "josephemekaonah" --password-stdin
-          docker tag cherryfrontend:latest josephemekaonah/cherryfrontend:latest
-          docker push josephemekaonah/cherryfrontend:latest
+          echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+          docker tag cherryfrontend:latest ${DOCKER_USERNAME}/cherryfrontend:latest
+          docker push ${DOCKER_USERNAME}/cherryfrontend:latest
+
 
 #      - name: Trigger Render Deployment
 #        env:
