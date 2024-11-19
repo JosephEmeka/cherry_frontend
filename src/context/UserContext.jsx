@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useCallback } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import api from '../utils/Api';
@@ -8,15 +8,14 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
-    const logout = useCallback(() => {
+    const logout = () => {
         setUser(null);
         localStorage.removeItem('token');
         toast.success("Logged out successfully.");
-        // navigate('/login');
-    },
-        );
+        navigate('/login');
+    };
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -26,22 +25,21 @@ export const UserProvider = ({ children }) => {
             } catch (error) {
                 console.error("User fetch failed", error);
                 toast.error("Failed to load user data. Please log in again.");
-                logout();
             } finally {
                 setLoading(false);
             }
         };
 
         fetchUserData();
-    }, [logout]);
+    }, []);
 
-return (
+    return (
         <UserContext.Provider value={{ user, setUser, logout, loading }}>
-            {loading ?
+            {loading ? (
                 <div className="flex items-center justify-center h-screen">
                     <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-custom-cherry border-solid"></div>
                 </div>
-                : children}
+            ) : children}
         </UserContext.Provider>
     );
 };

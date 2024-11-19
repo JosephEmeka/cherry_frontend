@@ -30,6 +30,8 @@ const CreateAccountPage = () => {
                 email: form.email,
                 phone: `${form.countryCode}${form.phone}`,
                 password: form.password,
+            }, {
+                withCredentials: true // This includes credentials with the request
             });
             toast.success("Account created successfully!");
             // Optionally, redirect to login page after success

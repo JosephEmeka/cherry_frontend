@@ -5,28 +5,37 @@ import logo from "../../assets/cherryLogo.png";
 const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError("");
+        setLoading(true);
 
         try {
-            const response = await axios.post("http://localhost:5000/api/auth/login", {
+            const response = await axios.post("https://cherry-backend-zbr2.onrender.com/api/auth/login", {
                 email,
                 password
             });
 
             if (response.status === 200) {
-                const { token, user } = response.data; // Assuming response contains a token and user data
+                const { token, user } = response.data;
 
-                // Save token and user data to localStorage
                 localStorage.setItem("token", token);
                 localStorage.setItem("user", JSON.stringify(user));
 
                 console.log("Login successful:", response.data);
-                // Optionally redirect the user after login
-                window.location.href = "/dashboard"; // Update to your dashboard route
+                window.location.href = "/dashboard";
             }
         } catch (error) {
+            // Handle axios error
+            setLoading(false);
+            if (error.response && error.response.status === 401) {
+                setError("Invalid email or password.");
+            } else {
+                setError("An error occurred. Please try again.");
+            }
             console.error("Login error:", error);
         }
     };
@@ -48,16 +57,19 @@ const LoginPage = () => {
                     <p className="text-gray-500 mb-3 text-sm">Log in to your account</p>
                 </div>
 
+
                 <button className="flex items-center justify-center w-full py-2 mb-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50">
                     <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="Google" className="mr-2" />
                     Continue with Google
                 </button>
+
 
                 <div className="flex items-center my-3">
                     <hr className="w-full border-gray-300" />
                     <span className="px-2 text-gray-400 text-sm">or</span>
                     <hr className="w-full border-gray-300" />
                 </div>
+
 
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
@@ -84,20 +96,27 @@ const LoginPage = () => {
                         />
                     </div>
 
+
                     <div className="text-right mb-4">
                         <a href="/forgot-password" className="text-xs text-custom-cherry hover:underline">
                             Forgot Password?
                         </a>
                     </div>
 
-                    <button type="submit" className="w-full py-2 text-white bg-custom-cherry rounded-lg hover:bg-blue-700 text-sm">
-                        Log In
+
+                    <button type="submit" className={`w-full py-2 text-white bg-custom-cherry rounded-lg hover:bg-blue-700 text-sm ${loading ? "opacity-50 cursor-not-allowed" : ""}`} disabled={loading}>
+                        {loading ? "Logging In..." : "Log In"}
                     </button>
+
+
+                    {error && <p className="mt-3 text-red-600 text-xs text-center">{error}</p>}
                 </form>
+
 
                 <p className="mt-4 text-center text-xs text-gray-500">
                     By continuing, you agree to our <a href="/terms" className="text-custom-cherry hover:underline">Terms of Service</a> and <a href="/privacy" className="text-custom-cherry hover:underline">Privacy Policy</a>.
                 </p>
+
 
                 <p className="mt-3 text-center text-xs">
                     Don’t have an account? <a href="/signup" className="text-custom-cherry font-medium hover:underline">Create an Account</a>
