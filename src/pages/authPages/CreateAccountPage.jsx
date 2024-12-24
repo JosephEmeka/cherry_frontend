@@ -33,6 +33,7 @@ const CreateAccountPage = () => {
             }, {
                 withCredentials: true // This includes credentials with the request
             });
+            console.log(response);
             toast.success("Account created successfully!");
             // Optionally, redirect to login page after success
             // window.location.href = "/login";
