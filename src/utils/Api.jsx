@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://your-backend-url.com/api',
+    baseURL: 'https://cherry-backend-zbr2.onrender.com',
     headers: { 'Content-Type': 'application/json' },
 });
 
